@@ -1,0 +1,75 @@
+.card
+{   margin: 10px;
+    justify-content: space-between;
+    display: flex;   
+    align-content: baseline;
+    width: 400px;
+    min-height: 370px;
+    height: 100%;
+    transition: all 0.7s; 
+    padding: 15px 0px 15px 20px;
+    animation: ani 2.5s forwards;
+    cursor: pointer;
+ 
+}
+.cardOne
+{   margin: 10px;
+    justify-content: space-between;
+    display: flex;   
+    align-content: baseline;
+    width: 70%;
+    height: 100%;
+    transition: all 0.7s; 
+    padding: 15px 0px 15px 20px;
+    animation: ani 2s forwards;
+ 
+}
+@keyframes ani {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+  }
+.cardDay{    
+    align-items: center;
+    color: whitesmoke;
+    padding: 30px;
+    width: 100%;   
+    background: radial-gradient(circle 200px at 90% 10%,#f3ef04e0 , #03a5f0b4);
+    border-radius: 6px;
+    box-shadow: 0px 5px 20px rgba(27, 108, 114, 0.25);
+}
+.card:hover{
+    border-radius: 15px;
+    background: rgba(25, 236, 236, 0.596);
+    transition: all 1s;
+
+}
+.cardNight{
+    align-items: center;
+
+    color: whitesmoke;
+    padding: 30px;
+    width: 100%;   
+    background: radial-gradient(circle 150px at 90% 10%,#bab8dfb4 , #0d0574b4);
+    border-radius: 6px;
+    box-shadow: 0px 10px 30px rgba(27, 108, 114, 0.493);
+
+}
+.block
+{
+    justify-content: space-between;
+    display: flex;   
+    align-items: normal;
+}
+.cardDay button
+{   
+    width: 100%; 
+    background-color: red;
+    font-size:17px;
+    height: 30px;
+}
+
+@media only screen and (max-width: 1000px) {
+    .cardOne {
+        width: 100%;
+    }
+  }

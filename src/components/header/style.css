@@ -1,0 +1,60 @@
+.header{
+    /*padding: 1%;*/
+    background: linear-gradient(20deg,#0fbed1b4 0%,#3affce 95%),#232323;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+h1
+{
+    color: whitesmoke;
+    text-align: center;
+}
+.form
+{
+    margin: 1%;    
+    display: flex;
+    width: 40%; 
+    height: 50px;
+    border-radius: 6px;
+    background: rgb(48, 145, 235);
+    border: solid;
+    border-width: 4px;
+    border-color: rgb(48, 145, 235);
+}
+.form input
+{   
+    width: 85%; 
+    font-size:20px;
+}
+.form input:active, :hover, :focus {
+    outline: 0;
+    outline-offset: 0;
+}
+.form button{
+    text-align: center;
+    color: whitesmoke;
+    background: rgb(48, 145, 235);
+    width: 20%;
+    border: 0;
+    font-size:20px;
+    transition: all 0.7s;
+}
+button:hover{  
+    font-size:25px;
+    transition: all 0.7s;
+    background: rgba(41, 125, 204, 0.603);;
+}
+button{
+    padding: 5px;
+    margin: 5px;
+    display: inline;
+    flex-direction: column;
+    border-radius: 6px;
+    text-align: center;
+    color: whitesmoke;
+    background: rgb(48, 145, 235);
+    border: 0;
+    font-size:20px;
+    transition: all 0.7s;
+}
