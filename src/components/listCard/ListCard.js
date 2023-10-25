@@ -12,7 +12,8 @@ const ListCard = () => {
   return (
 
     <div className="content">
-      {citys.map((city) => {
+      {citys.slice(0)
+  .reverse().map((city) => {
         return <Card key={city.id} id={city.id} city={city.text} styleCard="card"/>;
       })}
     </div>

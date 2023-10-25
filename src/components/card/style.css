@@ -1,8 +1,7 @@
 .card
-{   margin: 10px;
+{   margin: 5px;
     justify-content: space-between;
-    display: flex;   
-    align-content: baseline;
+    display: flex;  
     width: 400px;
     min-height: 370px;
     height: 100%;
@@ -10,19 +9,18 @@
     padding: 15px 0px 15px 20px;
     animation: ani 2.5s forwards;
     cursor: pointer;
- 
 }
 .cardOne
 {   margin: 10px;
     justify-content: space-between;
     display: flex;   
     align-content: baseline;
-    width: 70%;
+    width: 100%;
+    max-width: 900px;
     height: 100%;
     transition: all 0.7s; 
     padding: 15px 0px 15px 20px;
     animation: ani 2s forwards;
- 
 }
 @keyframes ani {
     0% {opacity: 0;}
@@ -31,7 +29,7 @@
 .cardDay{    
     align-items: center;
     color: whitesmoke;
-    padding: 30px;
+    padding: 20px;
     width: 100%;   
     background: radial-gradient(circle 200px at 90% 10%,#f3ef04e0 , #03a5f0b4);
     border-radius: 6px;
@@ -39,15 +37,15 @@
 }
 .card:hover{
     border-radius: 15px;
-    background: rgba(25, 236, 236, 0.596);
+    box-shadow: 0px 5px 20px rgb(114, 27, 42);
+    /*background: rgba(25, 236, 236, 0.596);*/
     transition: all 1s;
 
 }
 .cardNight{
     align-items: center;
-
     color: whitesmoke;
-    padding: 30px;
+    padding: 20px;
     width: 100%;   
     background: radial-gradient(circle 150px at 90% 10%,#bab8dfb4 , #0d0574b4);
     border-radius: 6px;
@@ -58,16 +56,8 @@
 {
     justify-content: space-between;
     display: flex;   
-    align-items: normal;
+    align-items: center;
 }
-.cardDay button
-{   
-    width: 100%; 
-    background-color: red;
-    font-size:17px;
-    height: 30px;
-}
-
 @media only screen and (max-width: 1000px) {
     .cardOne {
         width: 100%;

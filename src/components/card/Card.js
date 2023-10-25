@@ -1,13 +1,14 @@
 import "./style.css";
 import closeImg from "../../ico/close.png";
 import React, { useEffect, useState } from "react";
-import { getCityWeatherInfo } from "./../../http/Api";
+import { getCityWeatherInfo, } from "./../../http/Api";
 import { useDispatch } from "react-redux";
-import { removeCity,addMainCity } from "../../store/citySlice";
-import { kmhToMs,ruWind } from "../../lib/Function";
+import { removeCity, addMainCity } from "../../store/citySlice";
+import { kmhToMs, ruWind, fullTime} from "../../lib/Function";
 
 const Card = ({ id, city, styleCard }) => {
   const dispatch = useDispatch();
+
   const [weatherInfo, setWeatherInfo] = useState(
     "" /*{
         temp_c: 0,
@@ -23,53 +24,56 @@ const Card = ({ id, city, styleCard }) => {
         humidity: 0
 
     }*/
-  );
-
-  const getInfo = () => {
+  )
+  const getWeatherInfo = () => {
     getCityWeatherInfo(city).then((data) => {
-      if (data) //console.log(data);
-      setWeatherInfo(data.current);
+      if (data)        
+        setWeatherInfo(data);
     });
-  };
- /* const ruWind = (wind) => {
-    let tempWind = wind;
-    if (tempWind.length > 2) tempWind = tempWind.substring(1);
-    tempWind = tempWind.replace("S", "Ю");
-    tempWind = tempWind.replace("N", "С");
-    tempWind = tempWind.replace("E", "В");
-    tempWind = tempWind.replace("W", "З");
-    return tempWind;
-  };*/
+  }
 
-  const isDay = () => {
+  const dayLength = () => {
+    if (styleCard === "cardOne") {
+      if (!weatherInfo)
+        return <div></div>;
+      return (<div>
+          <h4>Восход: {fullTime(weatherInfo.astro.sunrise)}</h4>
+          <h4>Закат: {fullTime(weatherInfo.astro.sunset)}</h4>
+      </div>)
+    }
+  }
+  const mainWeatherInfo = () => {
     let classDay = "cardNight";
     if (!weatherInfo) return <div></div>;
-    if (weatherInfo.is_day) classDay = "cardDay";
+    if (weatherInfo.current.is_day) classDay = "cardDay";
     return (
-      <div className={classDay} onClick={(e) => {dispatch(addMainCity({ city }))}}>
+      <div className={classDay} onClick={(e) => {
+        if (styleCard !== "cardOne")
+          dispatch(addMainCity({ city }))
+      }}>
         <h2>
-          {city} {weatherInfo.last_updated.substring(10)}
+          {city} {weatherInfo.current.last_updated.substring(10)}
         </h2>
-        <p>Температура: {weatherInfo.temp_c}C</p>
-        <p>Ощущается как: {weatherInfo.feelslike_c}C</p>
+        <p>Температура: {Math.round(weatherInfo.current.temp_c)}°</p>
+        <p>Ощущается как: {Math.round(weatherInfo.current.feelslike_c)}°</p>
         <p>
-          Ветер : {ruWind(weatherInfo.wind_dir)}{" "}
-          {kmhToMs(weatherInfo.wind_kph)} м/с
+          Ветер: {ruWind(weatherInfo.current.wind_dir)}{" "}
+          {kmhToMs(weatherInfo.current.wind_kph)} м/с
         </p>
-        <p>Влажность : {weatherInfo.humidity} %</p>
+        <p>Влажность: {weatherInfo.current.humidity} %</p>
         <div className="block">
-          <h3>{weatherInfo.condition.text}</h3>
-          <img  height="96px" src={weatherInfo.condition.icon}></img>
+          <h4>{weatherInfo.current.condition.text}</h4>
+          {dayLength()}
+          <img height="96px" src={weatherInfo.current.condition.icon}></img>
         </div>
       </div>
     );
-  };
+  }
 
-  useEffect(getInfo, []);
-
+  useEffect(getWeatherInfo, [])
   return (
     <div className={styleCard} >
-      {isDay()}
+      {mainWeatherInfo()}
       <div>
         <img
           height="20px"
@@ -78,7 +82,6 @@ const Card = ({ id, city, styleCard }) => {
             dispatch(removeCity({ id }));
           }}
         ></img>
-        
       </div>
     </div>
   );

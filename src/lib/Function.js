@@ -1,7 +1,17 @@
 export const kmhToMs = (kmh) => {
   const ms = (kmh * 1000) / 3600;
-  return ms.toFixed(2);
+  return ms.toFixed(1);
 };
+export const fullTime = (time) => {
+  if(time.indexOf("AM")>0)
+  {
+    return time.substring(0,5);
+  }
+  let hour = time.substring(0,2)-(-12);
+  return(hour+time.substring(2,5))
+
+};
+
 export const ruWind = (wind) => {
   let tempWind = wind;
   if (tempWind.length > 2) tempWind = tempWind.substring(1);

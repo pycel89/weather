@@ -22,24 +22,23 @@ const Header = () => {
   }
 
   const clickEnter = async () => {
-    const data = await getCity(typingCity);
+    const city = await getCity(typingCity);
     setCity("");
-    setFindCity(data)
+    setFindCity(city)
   }
 
-  const returnFindCity =(data,i)=>
+  const returnFindCity =(city,i)=>
   {
-    if(!data)
+    if(!city)
       return
-
     return(<button key={i} onClick={e =>{handleAction(e.target.textContent)
-      }}>+ {data.name}, {data.country}</button>
+      }}>+ {city.name}, {city.country}</button>
     )
   }
 
 
   return (<div className="header" /*onClick={e => e.stopPropagation()}*/>
-    <h1>Прогноз Погоды</h1>
+    <h1>Прогноз погоды</h1>
     <div className="form">
       <input placeholder="Введите название населенного пункта"
         value={typingCity}
