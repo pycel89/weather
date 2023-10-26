@@ -8,6 +8,7 @@ const ApiAstronomy = "http://api.weatherapi.com/v1/astronomy.json?key="
 export const getCity = async (city)=>
 {
     const nameCity = await axios.get(ApiSearch+ApiKey+'&q='+city)
+    
     return nameCity.data;
 }
 export const getCityWeatherInfo = async (city)=>

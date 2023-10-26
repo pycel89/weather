@@ -48,8 +48,13 @@ const Card = ({ id, city, styleCard }) => {
     if (weatherInfo.current.is_day) classDay = "cardDay";
     return (
       <div className={classDay} onClick={(e) => {
+        
         if (styleCard !== "cardOne")
+        {        
           dispatch(addMainCity({ city }))
+          
+          window.scrollTo(0,0);
+        }
       }}>
         <h2>
           {city} {weatherInfo.current.last_updated.substring(10)}

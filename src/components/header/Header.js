@@ -1,8 +1,10 @@
 import "./style.css"
 import { useDispatch } from 'react-redux';
 import { addCity } from '../../store/citySlice';
+import add from '../../ico/add.png'
+import upMenu from '../../ico/up.png'
 
-import React, {useState } from 'react';
+import React, { useState } from 'react';
 import { getCity } from './../../http/Api'
 
 
@@ -12,32 +14,41 @@ const Header = () => {
 
   const [typingCity, setCity] = useState("");
   const [findCity, setFindCity] = useState([]);
+  const [visibleIco, setVisibleIco] = useState(0)
 
   const handleAction = (text) => {
-    if(text.trim().length) {
-      const cityName=text.substring(2,text.indexOf(","))
-      dispatch(addCity(cityName));      
-    }
-    setFindCity([])
+    dispatch(addCity({ text: text.name, id: text.id }));
+    setFindCity(findCity.filter(city=> city.id!==text.id))
+    if(findCity.length===1)
+      setVisibleIco(false)
   }
 
-  const clickEnter = async () => {
+  const handleСlick = async () => {
     const city = await getCity(typingCity);
     setCity("");
     setFindCity(city)
+    if (city.length)
+      setVisibleIco(true)
+  }
+  const visibleUpMenu = () => {
+    if (visibleIco)
+      return (<img height="20px" width='50px'  src={upMenu} onClick={e => {
+        setVisibleIco(false)
+        setFindCity([])
+      }}></img>)
   }
 
-  const returnFindCity =(city,i)=>
-  {
-    if(!city)
+  const returnFindCity = (city) => {
+    if (!city)
       return
-    return(<button key={i} onClick={e =>{handleAction(e.target.textContent)
-      }}>+ {city.name}, {city.country}</button>
+    return (<div className="newCity" onClick={e => {
+      handleAction(city)
+    }}><img height="32px" src={add}></img><p key={city.id} >{city.name}, {city.country}</p></div>
     )
   }
 
 
-  return (<div className="header" /*onClick={e => e.stopPropagation()}*/>
+  return (<div className="header">
     <h1>Прогноз погоды</h1>
     <div className="form">
       <input placeholder="Введите название населенного пункта"
@@ -47,15 +58,21 @@ const Header = () => {
         }
         onKeyDown={e => {
           if (e.keyCode === 13)
-            clickEnter()
-          }
+          handleСlick()
+        }
         }
       ></input>
-      <button onClick={clickEnter}>Искать</button>
+      <button onClick={handleСlick}>Искать</button>
+    </div>
+    <div className="formNewCity">
+      {findCity.map((e) => returnFindCity(e))}
     </div>
     <div>
-    {findCity.map((e,i)=>returnFindCity(e,i))}
+      {
+        visibleUpMenu()
+      }
     </div>
+
   </div>)
 }
 export default Header;

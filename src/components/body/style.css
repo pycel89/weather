@@ -1,22 +1,30 @@
 
-.contentTop
-{
-    margin-left: auto;
-    margin-right: auto;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;  
-    /*min-height: 400px;  */
-    width: 90%;    
-    background: white;
-}
 .body
 {
     min-height: 550px;
 
 }
+.hide
+{ 
+    visibility : hidden;  
+
+}
+.show
+{
+    position: fixed;
+    top:65%;
+    left:93%;
+    visibility : visible;
+    animation: ani 2s forwards;
+    cursor: pointer;
+
+}
 @media only screen and (max-width: 700px) {
     .contentTop {
         width: 100%;
+    }
+    .show
+    {
+        width: 30px;
     }
   }

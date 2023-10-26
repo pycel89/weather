@@ -1,6 +1,6 @@
 .header{
     /*padding: 1%;*/
-    background: linear-gradient(20deg,#0fbed1b4 0%,#3affce 95%),#232323;
+    background: linear-gradient(-20deg,#0fbed1b4 -10%,#3affce 115%),#232323;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -11,16 +11,17 @@ h1
     text-align: center;
 }
 .form
-{
-    margin: 1%;    
+{   margin: 1%;    
     display: flex;
     width: 40%; 
     height: 50px;
     border-radius: 6px;
-    background: rgb(48, 145, 235);
-    border: solid;
-    border-width: 4px;
-    border-color: rgb(48, 145, 235);
+    background: rgba(168, 22, 42, 0.041);
+    border-style:solid;
+    border-color:rgba(255, 0, 0, 0.075);
+    border-width:3px;
+    border-radius: 6px;
+    box-shadow: 10px 5px 20px rgba(255, 255, 255, 0.493);
 }
 @media only screen and (max-width: 600px) {
     .form {
@@ -29,26 +30,65 @@ h1
   }
 .form input
 {   
+    background:whitesmoke;
     width: 85%; 
     font-size:20px;
+   
 }
 .form input:active, :hover, :focus {
     outline: 0;
     outline-offset: 0;
 }
+.formNewCity
+{
+    display: flex;
+    font-size:15px;
+    color:rgb(245, 245, 245);
+    font-weight:bolder;
+    flex-wrap: wrap;
+    justify-content: center; 
+
+}
+.newCity
+{
+    cursor: pointer;
+    /*min-width: 300px;*/
+    padding: 0 10px;
+	margin: 1% 2%;
+	background: #0f7ad100;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+    /*border-radius: 6px;*/
+    box-shadow: 0px 5px 20px rgba(255, 255, 255, 0.493);
+    transition: all 0.7s; 
+    animation: ani 1s forwards;
+}
+.header img
+{
+    cursor: pointer;
+    animation: ani 3s forwards;    
+}
+
+.newCity:hover
+{
+    font-size:20px;
+    transition: all 0.7s;
+    box-shadow: 0px 5px 20px rgba(170, 17, 88, 0.808);
+}
 .form button{
     text-align: center;
     color: whitesmoke;
-    background: rgb(48, 145, 235);
+    background: rgba(48, 145, 235, 0);
     width: 20%;
     border: 0;
     font-size:20px;
     transition: all 0.7s;
 }
 button:hover{  
-    font-size:25px;
+    font-size:27px;
     transition: all 0.7s;
-    background: rgba(41, 125, 204, 0.603);;
 }
 button{
     padding: 5px;
@@ -58,7 +98,6 @@ button{
     border-radius: 6px;
     text-align: center;
     color: whitesmoke;
-    background: rgb(48, 145, 235);
     border: 0;
     font-size:20px;
     transition: all 0.7s;

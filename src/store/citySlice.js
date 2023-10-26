@@ -8,10 +8,15 @@ const citySlice= createSlice({
     },
     reducers:{
         addCity(state,action){
+            //console.log(action.payload.text)
+            const a = state.citys.filter(citys => citys.idCity===action.payload.id)
+            if(a.length>0)
+            return
 
             state.citys.push({
                 id: new Date().toISOString(),
-                text:action.payload,
+                text:action.payload.text,
+                idCity:action.payload.id
             })
         },
         removeCity(state,action){

@@ -11,7 +11,7 @@
     cursor: pointer;
 }
 .cardOne
-{   margin: 10px;
+{   margin: -40px 0 0;
     justify-content: space-between;
     display: flex;   
     align-content: baseline;
